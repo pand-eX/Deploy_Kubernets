@@ -1,0 +1,41 @@
+# Download do Container TensorFlow para CPU
+docker pull tensorflow/serving:2.3.0
+
+# Download do Container TensorFlow para GPU
+# docker pull tensorflow/serving:2.3.0-gpu
+
+# Obs: Use uma opção ou outra acima!
+
+# O ponto de entrada padrão para a imagem do contêiner ‘tensorflow/serving: 2.3.0’ ou qualquer outra imagem do TF é ‘/usr/bin/tf_serving_entrypoint.sh’. 
+# Estaremos criando nosso próprio tf_serving_entrypoint.sh.
+
+# A instrução abaixo executa o Tensorflow Serving e carrega o modelo de ‘/models/resnet/’, abre a porta 8500 para gRPC e a porta 8501 para REST-API.
+
+# Abra um editor de texto e digite:
+#!/bin/bash
+tensorflow_model_server --port=8500 --rest_api_port=8501 --model_name=resnet --model_base_path=/models/resnet
+
+# Salve e então ajuste os privilégios:
+chmod +x tf_serving_entrypoint.sh
+
+# Execute o container tf/serving 
+docker run -d --name=servingbase tensorflow/serving:2.3.0
+
+# Copia o modelo para o container
+docker cp /tmp/modelo/1538687457/ servingbase:/models/resnet
+docker cp /tmp/modelo/1538687457/ servingbase:/models/resnet/1
+
+# Copia o script de execução tf_serving_script.sh
+docker cp tf_serving_entrypoint.sh servingbase:/usr/bin/tf_serving_entrypoint.sh
+
+# Commit 
+docker commit servingbase modelo_cls_dsa:latest
+
+# Finaliza o container
+docker kill servingbase
+
+# Executa a nova imagem criada
+docker run -d --name=modelo_cls_dsa -p 8500:8500 -p 8501:8501 modelo_cls_dsa:latest
+
+# Verifica se o container está em execução
+docker ps

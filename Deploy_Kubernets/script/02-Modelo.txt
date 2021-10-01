@@ -1,0 +1,9 @@
+O TensorFlow Serving é compatível apenas com o formato SavedModel, portanto, precisaremos converter qualquer modelo TensorFlow ou modelo Keras para o formato SavedModel. Aqui tem mais detalhes sobre isso: https://www.tensorflow.org/guide/saved_model
+
+Para simplificar, faremos o download de um modelo Tensorflow pré-treinado com arquitetura ResNet.
+
+# Crie uma pasta para gravar o modelo
+mkdir /tmp/modelo
+
+# Download do modelo ResNet pré-treinado
+curl -s https://storage.googleapis.com/download.tensorflow.org/models/official/20181001_resnet/savedmodels/resnet_v2_fp32_savedmodel_NHWC_jpg.tar.gz | tar --strip-components=2 -C /tmp/modelo -xvz

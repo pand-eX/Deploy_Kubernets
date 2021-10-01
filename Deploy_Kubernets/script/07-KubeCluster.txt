@@ -1,0 +1,24 @@
+# Configuração do Cluster Kubernetes
+
+# Crie o cluster no GCP conforme mostrado na aula
+
+gcloud auth login
+
+gcloud container clusters get-credentials NOME-DO-CLUSTER --zone=us-central1-c
+
+kubectl cluster-info
+
+kubectl apply -f deployment.yaml
+
+kubectl get deployment
+
+kubectl apply -f service.yaml
+
+kubectl get service
+
+# Teste usando GRPC (seu ip externo pode ser diferente)
+python cliente_cls.py -p 8500 -ip 34.66.7.69
+
+# Teste usando RESTAPI (seu ip externo pode ser diferente)
+python cliente_cls.py -p 8501 -ip 34.66.7.69
+

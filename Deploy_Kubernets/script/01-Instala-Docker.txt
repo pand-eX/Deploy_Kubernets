@@ -1,0 +1,14 @@
+# Instala o Docker Community Edition
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-get install -y docker-ce
+
+
+# Ajusta o acesso de sudo necessário para o docker
+sudo groupadd docker
+sudo gpasswd -a $USER docker
+
+# Precisaremos de uma conta DockerHub para que mais tarde possamos enviar nossa imagem docker. Crie uma conta, se ainda não tiver uma.
+# Assim que sua conta Dockerhub estiver configurada, faça login no docker:
+docker login

@@ -1,0 +1,15 @@
+# Teste usando GRPC
+python cliente_cls.py -p 8500 -ip localhost
+
+# Teste usando RESTAPI
+python cliente_cls.py -p 8501 -ip localhost
+
+# Veremos que GRPC tem tempo de resposta mais rápido do que RESTAPI.
+# Uma vez implantado na nuvem, a diferença é muito maior.
+
+# Finaliza o container
+docker stop modelo_cls_dsa
+
+# Push image para o Dockerhub
+docker tag modelo_cls_dsa:latest DOCKERHUB_USERNAME/modelo_cls_dsa:latest
+docker push DOCKERHUB_USERNAME/modelo_cls_dsa:latest

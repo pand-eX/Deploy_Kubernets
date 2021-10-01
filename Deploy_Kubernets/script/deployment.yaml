@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: modeloclsdsa-deployment
+  name: modeloclsdsa-deployment
+spec:
+  progressDeadlineSeconds: 2147483647
+  replicas: 2
+  revisionHistoryLimit: 2147483647
+  selector:
+    matchLabels:
+      app: modeloclsdsa-deployment
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: modeloclsdsa-deployment
+    spec:
+      containers:
+      - image: DOCKERHUB-USERNAME/modelo_cls_dsa:latest
+        imagePullPolicy: Always
+        name: modeloclsdsa-deployment
+        ports:
+        - containerPort: 8501
+          name: restapi
+          protocol: TCP
+        - containerPort: 8500
+          name: grpc
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
