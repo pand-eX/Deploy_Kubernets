@@ -22,13 +22,13 @@ Connect with me at [LinkedIn](https://www.linkedin.com/in/henrique-castro-484269
 ## Projeto
 
 
-![1]()
+![1](https://github.com/pand-eX/Deploy_Kubernets/blob/main/Deploy_Kubernets/assets/1.png)
 
 Todos os Script em Anexo no projeto.
 
 Na prática o que nós fazemos é iniciar o container gravamos o conteúdo dentro do container eu faço um commit e gero uma nova imagem com essa nova imagem eu então vou realizar um outro container e esse sim será usado para servir o modelo
 
-![2]()
+![2](https://github.com/pand-eX/Deploy_Kubernets/blob/main/Deploy_Kubernets/assets/2.png)
 
 finalizamos a etapa que é a configuração do tensorflow/serving eu posso servir o modelo nesse exato momento, mas vou dar um passo adiante e configurar um cluster Kubernets no ambiente em nuvem da google cloud plataform para orquestração do container.
 
@@ -40,20 +40,20 @@ Kubernets é um sistema de orquestração de contêiner de código aberto para a
 
 O Kubernets surgiu como plataforma de orquestração, sendo ferramenta essencial para equips de Engenharia de Dados. Sua importância é cada vez maior na infraestrutura de Big Data e no Deploy de Modelos de Machine Learning.
 
-![3]()
+![3](https://github.com/pand-eX/Deploy_Kubernets/blob/main/Deploy_Kubernets/assets/3.png)
 
 O Kubernets gerencia o acesso aos contêineres, gerenciando o balanceamento de carga entre os contêineres e automatizando o processo de escalabilidade para as aplicações.
 
-![4]()
+![4](https://github.com/pand-eX/Deploy_Kubernets/blob/main/Deploy_Kubernets/assets/4.png)
 
-![5]()
+![5](https://github.com/pand-eX/Deploy_Kubernets/blob/main/Deploy_Kubernets/assets/5.png)
 
 
 ## Funcionamento do Kubernetes.
 
 Nossa Aplicações serão colocas em contêineres(como fizemos com o modelo de Machine Learning). O Kubernetes vai distribuir os contêineres em Pods, que são estruturas lógicas para as quais atribuímos endereço ip. Qualquer conteiner no mesmo pod compartilhará os mesmo recursos e rede local.
 
-![6]()
+![6](https://github.com/pand-eX/Deploy_Kubernets/blob/main/Deploy_Kubernets/assets/6.png)
 
 
 Usando os conceitos descrito anteriormente, você pode criar um cluster de nodes e iniciar implatações de pds no cluster. Há um último problema a ser resolvido: permitir o tráfego externo para o aplicativo.
@@ -62,34 +62,34 @@ Por padrão, o kubernetes fornece isolamento entre os pds e o mundo externo. Se 
 
 Depois de deixar o Gcloud SDK devidamente configurado. 
 
-![7]()
+![7](https://github.com/pand-eX/Deploy_Kubernets/blob/main/Deploy_Kubernets/assets/7.png)
 
 agora vamos instalar e configurar o Kubectl que é uma espécie de gerenciamento do Kubernets e ai estaremos pronto para definir o cluster Kubernets e fazer o Deploy.
 Já temos o Google Cloud SDK o conjunto de ferramentas de linha de comando para acessar remotamente o ambiente em nuvem da Google o GCP. Agora precisamos de ferramenta para gerenciar o Kubernets por isso o Kubectl.
 
-![8]()
+![8](https://github.com/pand-eX/Deploy_Kubernets/blob/main/Deploy_Kubernets/assets/8.png)
 
 Agora já temos o Kubectl só precisamos ativar o engine API do Kubernets lá no Google Plataform.
 
 
-![9]()
+![9](https://github.com/pand-eX/Deploy_Kubernets/blob/main/Deploy_Kubernets/assets/9.png)
 
 Pronto Cluster Criado.
 
-![10]()
+![10](https://github.com/pand-eX/Deploy_Kubernets/blob/main/Deploy_Kubernets/assets/10.png)
 
 Cluster Kubernets está pronto.
 Deploy do modelo no kubernetes.
 
-![11]()
+![11](https://github.com/pand-eX/Deploy_Kubernets/blob/main/Deploy_Kubernets/assets/11.png)
 
 Agora é fazer a configuração do serviço de acesso a nossa aplicação do cluster Kubernets. Ninguém na internet consegue acessa a nossa aplicação lá no cluster kubernets, precisamos de mais uma etapa. Agora vamos criar o serviço já fazendo o load balace de modo que automaticamente o Kubernets gerencie o balanceamento de carga.
 
-![12]()
+![12](https://github.com/pand-eX/Deploy_Kubernets/blob/main/Deploy_Kubernets/assets/12.png)
 
 Criado com sucesso.
 
 
-![13]()
+![13](https://github.com/pand-eX/Deploy_Kubernets/blob/main/Deploy_Kubernets/assets/13.png)
 
 Fazendo 10 previsões. Cada linha dessa é uma previsão de reconhecimento de imagem, ao invés de mostrar a imagem estou mostrando o tempo de execução.
