@@ -1,6 +1,6 @@
 # Deploy do Modelo de Machinee Learning com TensorFlow Serving e Kubernets na nuvem Google Cloud Platform.
 
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/pand-eX/Deploy_1/blob/main/LICENSE) 
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/pand-eX/Deploy_Kubernets/blob/main/LICENSE) 
 
 # Sobre o Projeto.
 
